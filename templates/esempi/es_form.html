@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%block titolo%}
+	{{block.super}} | FORM
+{%endblock titolo%}
+{%block contenuti%}
+
+    <h3>
+        Compila.. il form di contatto
+    </h3>
+  <div class="container">   
+     <form action="" method="post" class="bootstrap4">
+        {% csrf_token %} 
+            {{ form|crispy }} 
+        <input type="submit" value="Submit">
+    </form> 
+    </div> 
+<hr>
+<!--
+    <div class="container">
+       <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.error }}
+                {{ field.label }}
+                {{ field }}
+            </div>
+        {% endfor%}
+      
+        <input type="submit" value="Submit" class="btn btn-danger">
+        </form>  
+    </div>
+-->
+{%endblock contenuti%}

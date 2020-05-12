@@ -1,0 +1,102 @@
+{% extends 'base.html'%}
+{%block titolo%}
+	{{block.super}} | IF_ELSE
+{%endblock titolo%}
+{%block contenuti%}
+
+<b>var1 = {{ var1 }}</b> <br/>
+<b>var2 = {{ var2 }}</b> <br/>
+<b>var3 = {{ var3 }}</b> <br/>
+
+
+{% if var1 < var2 %}
+	<p><i>var1 is smaller than var2 </i></b>
+{% else %}
+	<p><i>var1 is not smaller than var2 </i></b>
+{% endif %}
+
+	
+{% if var1 > var2 %}
+	<p><i>var1 is greater than var2 </i></p>
+{% else %}
+	<p><i>var1 is not greater than var2 </i></p>
+{% endif %}
+	
+	
+{% if var1 <= var2 %}
+	<p><i>var1 is less than or equal to var2 </i></p>
+{% else %}
+	<p><i>var1 is not less than or not equal to var2 </i></p>
+{% endif %}
+
+
+{% if var1 >= var2 %}
+	<p><i>var1 is greater than or equal to var2 </i></p>
+{% else %}
+	<p><i>var1 is not greater than or not equal to var2 </i></p>
+{% endif %}
+
+
+{% if var1 == var2 %}
+	<p><i>var1 is equal to var2 </i></p>
+{% else %}
+	<p><i>var1 is not equal to var2 </i></p>
+{% endif %}
+
+
+{% if var1 != var2 %}
+	<p><i>var1 is not equal to var2 </i></p>
+{% else %}
+	<p><i>var1 is equal to var2 </i></p>
+{% endif %}
+
+
+{% if var1 < var2 and var1 < var3 %}
+	<p><i>var1 is less than var2 and var1 is less than var3 </i></p>
+{% else %}
+	<p><i>var1 is not less than var2 and var1 is not less than var3 </i></p>
+{% endif %}
+
+
+{% if var1 < var2 or var3 < var2 %}
+	<p><i>var1 is less than var2 or var3 is less than var2 </i></p>
+{% else %}
+	<p><i>var1 is not less than var2 or var3 is not less than var2 </i></p>
+{% endif %}
+
+
+{% if not var1 > var2 %}
+	<p><i>var1 is not greater than var2 </i></p>
+{% else %}
+	<p><i>var1 is greater than var2 </i></p>
+{% endif %}
+
+
+{% if a != a %}
+	<p><i>a is not equal to a </i></b>
+{% else %}
+	<p><i>a is equal to a </i></b>
+{% endif %}
+
+
+{% if 'hi' != 'hi' %}
+	<p><i>hi is not equal to hi </i></b>
+{% else %}
+	<p><i>hi is equal to hi </i></b>
+{% endif %}
+
+
+{% if 'hello world' != "hello world" %}
+	<p><i>hello world is not equal to hello world </i></b>
+{% else %}
+	<p><i>hello world is equal to hello world </i></b>
+{% endif %}
+
+
+{% if zero == 0 %}
+	<p><i>zero is equal to 0 </i></b>
+{% else %}
+	<p><i>zero is not equal to 0</i></b>
+{% endif %}
+
+{%endblock contenuti%}

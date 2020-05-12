@@ -1,0 +1,80 @@
+{% extends 'base.html'%}
+{%block titolo%}
+	{{block.super}} | IF_NOTEQUAL
+{%endblock titolo%}
+{%block contenuti%}
+
+
+<b>var1 = {{ var1 }}</b> <br/>
+<b>var2 = {{ var2 }}</b> <br/>
+<b>var3 = {{ var3 }}</b> <br/>
+<b>str1 = {{ str1 }}</b> <br/>
+<b>str2 = {{ str2 }}</b> <br/>
+<b>str3 = {{ str3 }}</b> <br/>
+<b>list1 = {{ list1 }}</b> <br/>
+<b>list2 = {{ list2 }}</b> <br/>
+
+{% ifnotequal var1 var2 %}
+	<p><i>var1 is not equal than var2 </i></b>
+{% endifnotequal %}
+	
+
+{% ifnotequal var1 var3 %}
+	<p><i>var1 is not equal than var3 </i></p>
+{% endifnotequal %}
+	
+	
+{% ifnotequal var2 var3 %}
+	<p><i>var2 is not equal than var3 </i></p>
+{% endifnotequal %}
+
+
+{% ifnotequal str1 str2 %}
+	<p><i>str1 is not equal than str2 </i></p>
+{% endifnotequal %}
+
+
+{% ifnotequal str1 str3 %}
+	<p><i>str1 is not equal than str3 </i></p>
+{% endifnotequal %}
+
+
+{% ifnotequal str2 str3 %}
+	<p><i>str2 is not equal than str3 </i></p>
+{% endifnotequal %}
+
+
+{% ifnotequal list1 list2 %}
+	<p><i>list1 is not equal to list2 </i></p>
+{% endifnotequal %}
+
+
+{% ifnotequal 10 10 %}
+	<p><i>10 is not equal to 10 </i></b>
+{% endifnotequal %}
+
+
+{% ifnotequal 9.9 9.90 %}
+	<p><i>9.9 is not equal to 99.90 </i></b>
+{% endifnotequal %}
+
+
+{% ifnotequal a a %}
+	<p><i>a is not equal to a </i></b>
+{% endifnotequal %}
+
+
+{% ifnotequal 'hi' 'hi' %}
+	<p><i>hi is not equal to hi </i></b>
+{% endifnotequal %}
+
+
+{% ifnotequal 'hello world' "hello world" %}
+	<p><i>hello world is not equal to hello world </i></b>
+{% endifnotequal %}
+
+
+{% ifnotequal 'zero' 0 %}
+	<p><i>zero is not equal to 0 </i></b>
+{% endifnotequal %}
+{%endblock contenuti%}

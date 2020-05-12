@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%block titolo%}
+	{{block.super}} | PROFILO
+{%endblock titolo%}
+{%block contenuti%}
+    <div class="row">
+        <div class="col-4">
+            <div class="card my-2">
+                <div class="card-header">
+                    <h4>{% if request.user == user %}Il tuo {% endif %}profilo Utente</h4>
+                </div>
+                <div class="card-body">
+                    <p class="lead">@{{ user }}</p>
+                    <p class="mb-0">Iscrizione: {{ user.date_joined|date:"d M Y" }}</p>
+                    <p class="mb-0">Posts: {{ user.post.count }}</p>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card my-2">
+                <div class="card-header">
+                    
+                </div>
+                <div class="card-body">
+                    {% for post in posts_utente %}
+                        <p><strong> Titolo: </strong> <a href="{% url 'blog:leggi_post' pk=post.id %}">{{ post.titolo }}</a>
+                            <br>{{ post.contenuto }}
+                            <br>{{ post.data_creazione }}
+                        </p>
+                    {% empty %}
+                        {% if request.user != user %}
+                            <p>{{ user }} non ha creato alcun post!</p>
+                        {% else %}
+                            <p>Non hai creato alcun post! <a href="{% url 'blog:crea_post'%}">Inizia Subito!</a></p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+    </div>
+{%endblock contenuti%}

@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+{%block titolo%}
+	{{block.super}} | IF_EQUAL
+{%endblock titolo%}
+{%block contenuti%}
+
+<b>var1 = {{ var1 }}</b> <br/>
+<b>var2 = {{ var2 }}</b> <br/>
+<b>var3 = {{ var3 }}</b> <br/>
+<b>str1 = {{ str1 }}</b> <br/>
+<b>str2 = {{ str2 }}</b> <br/>
+<b>str3 = {{ str3 }}</b> <br/>
+<b>list1 = {{ list1 }}</b> <br/>
+<b>list2 = {{ list2 }}</b> <br/>
+
+{% ifequal var1 var2 %}
+	<p><i>var1 is equal than var2 </i></b>
+{% endifequal %}
+	
+
+{% ifequal var1 var3 %}
+	<p><i>var1 is equal than var3 </i></p>
+{% endifequal %}
+	
+	
+{% ifequal var2 var3 %}
+	<p><i>var2 is equal than var3 </i></p>
+{% endifequal %}
+
+
+{% ifequal str1 str2 %}
+	<p><i>str1 is equal than str2 </i></p>
+{% endifequal %}
+
+
+{% ifequal str1 str3 %}
+	<p><i>str1 is equal than str3 </i></p>
+{% endifequal %}
+
+
+{% ifequal str2 str3 %}
+	<p><i>str2 is equal than str3 </i></p>
+{% endifequal %}
+
+
+{% ifequal list1 list2 %}
+	<p><i>list1 is equal to list2 </i></p>
+{% endifequal %}
+
+
+{% ifequal 10 10 %}
+	<p><i>10 is equal to 10 </i></b>
+{% endifequal %}
+
+
+{% ifequal 9.9 9.90 %}
+	<p><i>9.9 is equal to 99.90 </i></b>
+{% endifequal %}
+
+
+{% ifequal a a %}
+	<p><i>a is equal to a </i></b>
+{% endifequal %}
+
+
+{% ifequal 'hi' 'hi' %}
+	<p><i>hi is equal to hi </i></b>
+{% endifequal %}
+
+
+{% ifequal 'hello world' "hello world" %}
+	<p><i>hello world is equal to hello world </i></b>
+{% endifequal %}
+
+
+{% ifequal 'zero' 0 %}
+	<p><i>zero is equal to 0 </i></b>
+{% endifequal %}
+{%endblock contenuti%}

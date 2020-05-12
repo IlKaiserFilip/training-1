@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%block titolo%}
+	{{block.super}} | REGISTRAZIONE
+{%endblock titolo%}
+{%block contenuti%}
+    <h3>Registrazione<br>Compila il form</h3>
+    <div class="row justify-content-center mt-4">
+        <div class="col-6 text-center">
+            <form action="" method="post" class="bootstrap4">
+                {% csrf_token %} 
+                    {{ form|crispy }} 
+                <input type="submit" class="btn btn-primary" value="CREA">
+            </form> 
+        </div>
+    </div>
+{%endblock contenuti%}

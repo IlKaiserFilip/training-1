@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block contenuti %}
+    {% for post in blogpostmodel_list %}
+
+    <p>{{ forloop.counter }})  <a href="{% url 'blog:leggi_post' pk=post.id %}">{{ post.titolo }}</a>
+        <small>(<a href="{% url 'user_profile' username=post.autore%}">{{ post.autore }}</a>)</small> <!-- - {{ post.data_creazione }} -->
+    </p>
+
+        <!--
+            <p><strong>Titolo: </strong><a href="{{post.get_absolute_url}}">{{ post.titolo }}</a></p>
+        -->
+    {% endfor %}
+{% endblock contenuti %}

@@ -1,0 +1,66 @@
+{% extends 'base.html'%}
+{%block titolo%}
+	{{block.super}} | FILTER
+{%endblock titolo%}
+{%block contenuti%}
+Looping over a sequence of items using <b>forloop.counter</b> variable: 
+<br/>
+{% for x in list2 %}
+	<i>{{ forloop.counter }} </i> : {{ x }}<br>
+{% endfor %}
+<br/>
+
+
+Looping over a sequence of items using <b>forloop.counter0</b> variable: 
+<br/>
+{% for x in list2 %}
+	<i>{{ forloop.counter0 }}</i> : {{ x }}<br/>
+{% endfor %}
+<br/>
+
+
+Printing the first element of sequence using <b>forloop.first</b> variable: 
+<br/>
+{% for x in list2 %}
+	{% if forloop.first %}
+		<i>The first item</i> - {{ x }}	
+	{% endif%}
+{% endfor %}
+<br/>
+<br/>
+
+
+Printing the last element of sequence using <b>forloop.last</b> variable: 
+<br/>
+{% for x in list2 %}
+	{% if forloop.last %}
+		<i>The last item</i> - {{ x }}		
+	{% endif%}
+{% endfor %}
+<br/>
+<br/>
+
+
+Printing the left over items in the sequence using <b>forloop.revcounter</b> variable: 
+<br/>
+{% for x in list2 %}
+	<i>Total number of leftover item to be iterated</i> - {{ forloop.revcounter }}<br/>
+	<i>Item</i> - {{ x }}<br/>
+{% endfor %}
+<br/>
+
+
+Printing the left over items in the sequence using <b>forloop.revcounter0</b> variable: 
+<br/>
+{% for x in list2 %}
+	<i>Total number of leftover item to be iterated</i> - {{ forloop.revcounter0 }}<br/>
+	<i>Item</i> - {{ x }}<br/>
+{% endfor %}
+<br/>
+
+
+Printing the reversed sequence of items using <b>reversed</b> attribute of <b>for</b> tag: <br/>
+{% for x in list2 reversed %}
+	<i>Item</i> - {{ x }}<br/>
+{% endfor %}
+{%endblock contenuti%}

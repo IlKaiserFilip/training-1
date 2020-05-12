@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%block titolo%}
+	{{block.super}} | PROFILI
+{%endblock titolo%}
+{%block contenuti%}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">N</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Post</th>
+                    <!--<th scope="col">Commenti</th>-->
+                    <th scope="col">Iscritto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for utente in object_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }} </th>
+                        <td><a href="{% url 'user_profile' username=utente.username %}">
+                            <strong>@{{ utente.username }}</strong></a>
+                        </td>
+                        <td>{{ utente.post.count }}</td>
+                        <!--<td>{{ utente.comment.count }}</td>-->
+                        <td>{{ utente.date_joined|date:"d M Y" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%endblock contenuti%}

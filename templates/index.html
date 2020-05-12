@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{%block titolo%}
+	{{block.super}} | INDEX
+{%endblock titolo%}
+{%block contenuti%}
+<h1>Indice app</h1>
+{% if menu %}
+        <ol>
+        {% for voce in menu %}
+        <li><a href="{{ voce }}">{{ voce }}</a></li>
+        {% endfor %}
+        </ol>
+    {% else %}
+    <p>No app are available.</p>
+{% endif %}
+{%endblock contenuti%}
