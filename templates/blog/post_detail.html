@@ -1,10 +1,79 @@
-{% extends 'base.html'%}
-{%block contenuti%}
-<h2>Titolo post</h2>
-<h5>{{object.titolo}}</h5>
-<h2>Contenuto post</h2>
-<h5>{{object.contenuto}}</h5>
-<a href="/blog/modifica-post/{{ object.id }}"> 
-    <input type="submit" value="MODIFICA" class="btn btn-primary" value="MODIFICA"> 
-</a>
-{%endblock contenuti%}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ post.title }}{% endblock head_title%}
+
+{% block contenuti %}
+
+<div class="row">
+  <div class="col-8">
+      <div class="card my-2">
+          <div class="card-header">
+            <h3>{{post.titolo}}</h3>
+          </div>
+          <div class="card-body">
+            {{post.contenuto}}
+          </div>
+          <div class="card-footer">
+            <b>Pubblicato da :</b> <a href="{% url 'user_profile' username=post.autore %}">{{post.autore}}</a> {{post.data_creazione}}
+            {% if request.user == post.autore %}
+                <a href="{% url 'blog:modifica_post' pk=post.id %}">  
+                <input type="submit" value="MODIFICA" class="btn btn-danger my-1" value="MODIFICA">
+                </a>
+            {% else %}
+            <p>Non sei l'autore del post non puoi modificarlo</p>
+            {% endif %}
+          </div>
+      </div>
+  </div>
+</div>
+  
+<br><hr>
+  {% with comments.count as total_comments %}
+    <h4>
+      Commenti : {{ total_comments }}
+    </h4>
+  {% endwith %}
+  <hr>
+  {% for comment in comments %}
+  <div class="col-8">
+    <div class="card my-2">
+        <div class="card-body">
+          {{ comment.contenuto|linebreaks }}
+        </div>
+        <div class="card-footer">
+          Commento {{ forloop.counter }} di {{ comment.autore }}
+          {{ comment.data_creazione }}
+        </div>
+    </div>
+  </div>
+  {% empty %}
+    <p>Non ci sono ancora commenti</p>
+  {% endfor %}
+  {% if new_comment %}
+    <br><h4>Il tuo commento è stato aggiunto</h4>
+  {% else %}
+  <br>
+  <div class="row">
+    <div class="col-8">
+        <div class="card my-2">
+            <div class="card-header">
+              <h3><h4>Aggiungi un nuovo commento</h4></h3>
+            </div>
+            <div class="card-body">
+              <form method="post">
+                {{ comment_form|crispy }}
+                {% csrf_token %}
+                <p><input type="submit" class="btn btn-info" value="Aggiungi commento"></p>
+              </form>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+  </div>
+
+    
+   
+  {% endif %}
+{% endblock contenuti %}
