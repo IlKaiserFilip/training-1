@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import BlogPostModelForm
 from .models import BlogPostModel
-
+from django.urls import reverse
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import get_list_or_404, get_object_or_404
@@ -61,3 +61,4 @@ def creaPostView(request):
         form = BlogPostModelForm()
     context = {"form": form}   #contesto dei parametri da passare al render
     return render(request, "blog/crea_post.html", context)  #passo il form alla pagina per il render
+
